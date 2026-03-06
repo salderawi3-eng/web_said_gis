@@ -263,7 +263,7 @@ else:
                     left_gdf,
                     right_gdf,
                     how=how_option,
-                    op=spatial_pred
+                    op=spatial_pred,
                 )
 
                 st.session_state.join_result = result
@@ -366,4 +366,5 @@ else:
                 mime="application/geo+json"
             )
         except Exception as e:
+
             st.error(f"Failed to prepare GeoJSON file for download: {e}")
