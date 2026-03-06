@@ -1,2 +1,62 @@
-# web_said_gis
-Streamlit  web_saidgisfor Spatial and Attribute Join operations
+##  Streamlit-Based Web GIS for Spatial and Attribute Join Operations on (Streamlit) ####
+  Project Overview
+This project is a Web GIS application built using Streamlit and GeoPandas.
+It allows users to upload two spatial datasets and perform spatial and attribute joins directly in a web interface.
+ ## Features ####
+ ## 1️⃣ Upload Spatial Files
+Upload Shapefile (ZIP) as Left layer
+Upload GeoJSON as Right layer
+Automatic validation of files
+CRS consistency handling
+## 2️⃣ Data Preview
+Display interactive maps using Folium
+Show first 5 rows of each dataset
+## 3️⃣ Spatial Join
+Supported relationships:
+intersects
+within
+contains
+## Join types:
+left
+inner
+right
+Automatic CRS correction
+Clear success / error messages
+Result preview (first 10 rows)
+## 4️⃣ Attribute Join
+Select join fields from both datasets
+## Join types:
+left
+inner
+right
+outer
+Geometry preserved
+Clear result messages
+## 5️⃣ Download Result ####
+Export final result as GeoJSON
+Automatically prioritizes:
+Attribute Join result (if exists)
+Otherwise Spatial Join result
+### Technologies Used
+Streamlit
+GeoPandas
+Folium
+Shapely
+Fiona
+PyProj
+Rtree
+PyArrow
+#### Run Locally ####
+## 1️⃣ Activate Environment
+conda activate PYTHONGIS
+If the environment does not exist:
+conda env create -f PYTHONGIS.yml
+conda activate PYTHONGIS
+## 2️⃣ Run the Application
+streamlit run siadgis.py
+###### Future Improvements
+Add support for multiple layer visualization
+Add CRS selection tool
+Add buffering and clipping tools
+Add download in Shapefile format
+Improve styling and UI themes
