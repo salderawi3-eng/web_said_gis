@@ -248,7 +248,6 @@ else:
         )
 
         run_spatial = st.button("Run")
-
     if run_spatial:
         with st.spinner(" Processing"):
             try:
@@ -259,12 +258,20 @@ else:
                     if left_gdf.crs != right_gdf.crs:
                         right_gdf = right_gdf.to_crs(left_gdf.crs)
 
-                result = gpd.sjoin(
-                    left_gdf,
-                    right_gdf,
-                    how=how_option,
-                    op=spatial_pred,
-                )
+                try:
+                    result = gpd.sjoin(
+                        left_gdf,
+                        right_gdf,
+                        how=how_option,
+                        predicate=spatial_pred,
+                    )
+                except TypeError:
+                    result = gpd.sjoin(
+                        left_gdf,
+                        right_gdf,
+                        how=how_option,
+                        op=spatial_pred,
+                    )
 
                 st.session_state.join_result = result
 
@@ -278,7 +285,6 @@ else:
             except Exception as e:
                 st.session_state.join_result = None
                 st.error(f" error occurred during  Spatial Join: {e}")
-
 st.divider()
 st.header("Attribute Join ")
 
@@ -366,5 +372,4 @@ else:
                 mime="application/geo+json"
             )
         except Exception as e:
-
             st.error(f"Failed to prepare GeoJSON file for download: {e}")
